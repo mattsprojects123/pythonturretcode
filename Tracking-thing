@@ -104,7 +104,7 @@ class VideoUtils(object):
 
             # if the first frame is None, initialize it
             if firstFrame is None:
-                print "Waiting for video to adjust..."
+                print ("Waiting for video to adjust...")
                 if tempFrame is None:
                     tempFrame = gray
                     continue
@@ -114,7 +114,7 @@ class VideoUtils(object):
                     tst = cv2.threshold(delta, 5, 255, cv2.THRESH_BINARY)[1]
                     tst = cv2.dilate(tst, None, iterations=2)
                     if count > 30:
-                        print "Done.\n Waiting for motion."
+                        print ("Done.\n Waiting for motion.")
                         if not cv2.countNonZero(tst) > 0:
                             firstFrame = gray
                         else:
@@ -423,4 +423,4 @@ if __name__ == "__main__":
             thread.start_new_thread(VideoUtils.live_video, ())
         t.interactive()
     else:
-        print "Unknown input mode. Please choose a number (1) or (2)"
+        print ("Unknown input mode. Please choose a number (1) or (2)")
